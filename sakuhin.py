@@ -1,2 +1,30 @@
 import streamlit as st
-st.title ("作戦開始")
+st.title ("自己紹介アプリ改")
+st.write("このアプリは、自己紹介を簡単に作成してコピーまでできる便利なアプリです。書かなくてもいいです。")
+st.write("早速,自己紹介を作ってみましょう！effectが流れてきます。")
+name = st.text_input("名前を入力してください。ニックネームでもいいです。")
+birthday = st.date_input("あなたの誕生日を入力してください。架空の日付でもいいです。")
+blood_type = st.select_slider("血液型は？架空でもいいです。",options = ["A型","B型","O型","AB型"])
+hobby = st.text_area("趣味は？架空でもいいです。")
+addicted = st.text_area("ハマっていることは？架空でもいいです。")
+TV = st.text_area("好きなテレビ番組は？架空でもいいです。")
+job = st.text_area("将来の夢は？架空でもいいです。")
+age = st.number_input("年齢は？架空でもいいです。",min_value=0,max_value=100)
+skill = st.text_area("得意なことは？架空でもいいです。")
+
+st.write("あなたの自己紹介は以下の通りです")
+
+st.write(f"名前: {name}")
+st.write(f"誕生日: {birthday}")
+st.write(f"血液型: {blood_type}")
+st.write(f"趣味: {hobby}")
+st.write(f"ハマっていること: {addicted}")
+st.write(f"好きなテレビ番組: {TV}")
+st.write(f"将来の夢: {job}")
+st.write(f"年齢: {age}")
+st.write(f"得意なこと: {skill}")
+
+for i in range(1):
+    st.snow()
+st.write("Ctrl+cでコピーCtrl+vで貼り付けできます。")
+st.write("このアプリは, Streamlitで作成されています。")
