@@ -1,30 +1,63 @@
 import streamlit as st
-st.title ("自己紹介アプリ改")
-st.write("このアプリは、自己紹介を簡単に作成してコピーまでできる便利なアプリです。書かなくてもいいです。")
-st.write("早速,自己紹介を作ってみましょう！effectが流れてきます。")
-name = st.text_input("名前を入力してください。ニックネームでもいいです。")
-birthday = st.date_input("あなたの誕生日を入力してください。架空の日付でもいいです。")
-blood_type = st.select_slider("血液型は？架空でもいいです。",options = ["A型","B型","O型","AB型"])
-hobby = st.text_area("趣味は？架空でもいいです。")
-addicted = st.text_area("ハマっていることは？架空でもいいです。")
-TV = st.text_area("好きなテレビ番組は？架空でもいいです。")
-job = st.text_area("将来の夢は？架空でもいいです。")
-age = st.number_input("年齢は？架空でもいいです。",min_value=0,max_value=100)
-skill = st.text_area("得意なことは？架空でもいいです。")
 
-st.write("あなたの自己紹介は以下の通りです")
 
-st.write(f"名前: {name}")
-st.write(f"誕生日: {birthday}")
-st.write(f"血液型: {blood_type}")
-st.write(f"趣味: {hobby}")
-st.write(f"ハマっていること: {addicted}")
-st.write(f"好きなテレビ番組: {TV}")
-st.write(f"将来の夢: {job}")
-st.write(f"年齢: {age}")
-st.write(f"得意なこと: {skill}")
+st.title("自己紹介アプリ改 🌎")
+st.write("このアプリは、自己紹介を簡単に作成してコピーまでできる便利なアプリです。")
 
-for i in range(1):
-    st.snow()
-st.write("Ctrl+cでコピーCtrl+vで貼り付けできます。")
-st.write("このアプリは, Streamlitで作成されています。")
+lang = st.radio("表示する言語を選んでね / Choose Language", ["日本語 (Japanese)", "English"])
+
+
+name = st.text_input("名前を入力してください。 / Name")
+birthday = st.date_input("あなたの誕生日を入力してください。 / Birthday", value=None)
+blood_type = st.select_slider("血液型は？ / Blood Type", options=["A型", "B型", "O型", "AB型"])
+age = st.number_input("年齢は？ / Age", min_value=0, max_value=120, value=0)
+hobby = st.text_area("趣味は？ / Hobbies")
+addicted = st.text_area("ハマっていることは？ / Current Obsession")
+TV = st.text_area("好きなテレビ番組は？ / Favorite TV Shows")
+skill = st.text_area("得意なことは？ / Skills")
+job = st.text_area("将来の夢は？ / Future Dream")
+
+st.markdown("---")
+
+
+if lang == "日本語 (Japanese)":
+    st.subheader("あなたの自己紹介は以下の通りです")
+    
+    intro_text = f"""【自己紹介】
+■ 名前: {name}
+■ 誕生日: {birthday if birthday else '未入力'}
+■ 血液型: {blood_type}
+■ 年齢: {age}歳
+■ 趣味: {hobby}
+■ ハマっていること: {addicted}
+■ 好きなテレビ番組: {TV}
+■ 得意なこと: {skill}
+■ 将来の夢: {job}"""
+
+    instruction = "※ 右上のアイコンからワンクリックでコピーできます。"
+
+else:
+   
+    st.subheader("Your Profile in English")
+    
+    intro_text = f"""【My Profile】
+■ Name: {name if name else 'Not specified'}
+■ Birthday: {birthday if birthday else 'Not specified'}
+■ Blood Type: {blood_type}
+■ Age: {age if age > 0 else 'Not specified'}
+■ Hobbies: {hobby}
+■ Current Obsession: {addicted}
+■ Favorite TV Shows: {TV}
+■ Skills: {skill}
+■ Future Dream: {job}"""
+
+    instruction = "* Click the icon in the upper right corner to copy the text."
+
+
+st.text_area(lang, value=intro_text, height=280)
+st.caption(instruction)
+
+
+st.snow()
+st.write("このアプリは、Streamlitで作成されています。")
+
