@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-st.title("自己紹介アプリ改 🌎")
+st.title("自己紹介アプリ 🌎")
 st.write("このアプリは、自己紹介を簡単に作成してコピーまでできる便利なアプリです。")
 
 lang = st.radio("表示する言語を選んでね / Choose Language", ["日本語 (Japanese)", "English"])
